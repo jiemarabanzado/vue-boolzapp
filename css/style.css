@@ -19,8 +19,11 @@ body{
 
 .app-container{
     width: 1300px;
-    height: 700px;
+    height: 93vh;
     background-color: white;
+}
+.active{
+    background-color: #E9EBEB;
 }
 /*--------------images-------------*/
 .my-avatar{
@@ -136,9 +139,9 @@ body{
     height: 13.5%;
     padding: 10px 15px;
     position: relative;
+    border-bottom: 1px solid lightgray;
 }
 .object-of-text{
-    border-bottom: 1px solid lightgray;
     flex-grow: 1;
 }
 .last-text{

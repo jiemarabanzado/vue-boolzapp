@@ -5,6 +5,9 @@ const { createApp } = Vue
     data() {
       return {
         message: 'Hello Vue!',
+        activeChat:0,
+        newText: "",
+        searchChat:'',
         contacts: [
             {
                 name: 'Michele',
@@ -169,5 +172,39 @@ const { createApp } = Vue
             }
         ]
       }
+    },
+    methods:{
+        changeActive(i){
+            this.activeChat=i;
+        },
+        addNewMessage(){
+            const newMessageObj={
+                date: new Date().getTime(),
+                message: this.newText,
+                status: 'sent',
+            }
+            this.contacts[this.activeChat].messages.push(newMessageObj);
+            this.newText=""
+            setTimeout(()=>{
+                const newMessageObjResponse={
+                    date: new Date().getTime(),
+                    message: "ok",
+                    status: 'received',
+                }
+                this.contacts[this.activeChat].messages.push(newMessageObjResponse);
+            },2000);
+        },
+        searchContact(){
+            this.contacts.forEach(contact => {
+                const compareName=contact.name.slice(0,this.searchChat.length);
+                if(this.searchChat.length===0){
+                    contact.visible=true;
+                }else if(compareName.toUpperCase()===this.searchChat.toUpperCase()){
+                    contact.visible=true;
+                }else{
+                    contact.visible=false;
+                }
+            });
+        }
     }
   }).mount('#app')

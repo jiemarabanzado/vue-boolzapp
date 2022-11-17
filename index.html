@@ -44,14 +44,14 @@
                 <div class="search-bar">
                     <form action="">
                         <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat"@keyup="searchContact">
                     </form>
                 </div>
                 <!--all chats section-->
                 <section class="chats">
-                    <div class="chat row" v-for="(contact,index) in contacts">
+                    <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in contacts" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
                         <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                         </div>
                         <div class="object-of-text">
                             <div class="chat-name">{{contact.name}}</div>
@@ -71,10 +71,10 @@
                 <!--right header-->
                 <div class="right-header row">
                     <div class="my-avatar">
-                        <img src="img/avatar_io.jpg" alt=""> 
+                        <img :src="`img/avatar${contacts[activeChat].avatar}.jpg`" alt=""> 
                     </div>
                     <div class="who">
-                        <div class="subject-name">Sophia</div>
+                        <div class="subject-name">{{contacts[activeChat].name}}</div>
                         <div class="last-online">
                             <small class="last-time-on">
                                 Ultimo accesso oggi alle 12:00
@@ -89,82 +89,13 @@
                 <!--chat section-->
                 <section class="chat-section">
                     <div class="chats-container">
-                        <div class="message-row row">
-                            <div class="content sent">
-                                Hai portato a spasso il cane?
+                        <div class="message-row row" v-for="message in contacts[activeChat].messages">
+                            <div class="content " :class="message.status">
+                                {{message.message}}
                                 <small class="time-sent">12:00</small>
                             </div>                            
                         </div>
-                        <div class="message-row row">
-                            <div class="content sent">
-                                Ricordati di stendere i panni
-                                <small class="time-sent">12:00</small>
-                            </div>
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas quo ad soluta. Deleniti, quos libero? In itaque distinctio, corporis cupiditate quidem odit rem ullam, magnam ab quasi fugiat repellat perspiciatis!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content sent">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content sent">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
-                        <div class="message-row row">
-                            <div class="content sent">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div><div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div><div class="message-row row">
-                            <div class="content received">
-                                Tutto fatto!
-                                <small class="time-sent">12:00</small>
-                            </div>                           
-                        </div>
+                        
 
                     </div>
                     
@@ -174,9 +105,7 @@
                         <button id="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
                     </div>
                     <div id="send-text">
-                        <form action="">
-                            <input type="text" placeholder="Scrivi un messaggio">
-                        </form>
+                        <input type="text" placeholder="Scrivi un messaggio" @keyup.enter="addNewMessage" v-model="newText" required>
                     </div>
                     <div class="send-btn row">
                         <button id="audio-text-btn"><i class="fa-solid fa-microphone"></i></button>
