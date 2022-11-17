@@ -2,5 +2,100 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    background-color: pink;
+}
+/*common use*/
+.row{
+    display: flex;
+}
+
+
+
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(#01a783 17% ,white 17%);
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container{
+    width: 1300px;
+    height: 700px;
+    background-color: grey;
+}
+/*--------------images-------------*/
+.my-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.my-avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+/*-------------------left style--------------------------------------*/
+.left-app{
+    width: 34%;
+    height: 100%;
+    border-right: 1px solid lightgrey;
+}
+.left-header{
+    background-color: #eaeaea;
+    width: 100%;
+    height: 7.5%;
+    padding: 10px 15px;
+    align-items: center;
+}
+#left-story,#new-message{
+    color: #536069;
+    margin-right: 20px;
+    font-size: 1.2rem;
+}
+#left-menu{
+    color: #536069;
+    font-size: 1.2rem;
+}
+.my-name{
+    flex-grow: 1;
+}
+.notification{
+    background-color: #8edafc;
+    width: 100%;
+    height: 9.5%;
+    padding: 0px 20px;
+    align-items: center;
+}
+.bell-icon{
+    background-color: #f2fbff;
+    color: #8edafc;
+    font-size: 1.3rem;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+#active-notification{
+    color: #4f7485;
+}
+/*-------------------rght style--------------------------------------*/
+.right-app{
+    width: 66%;
+    height: 100%;
+}
+.right-header{
+    background-color: #eaeaea;
+    width: 100%;
+    height: 7.5%;
 }
