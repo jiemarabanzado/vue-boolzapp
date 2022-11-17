@@ -49,102 +49,19 @@
                 </div>
                 <!--all chats section-->
                 <section class="chats">
-                    <div class="chat row">
+                    <div class="chat row" v-for="(contact,index) in contacts">
                         <div class="person-image">
                             <img src="img/avatar_1.jpg" alt="">
                         </div>
                         <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
+                            <div class="chat-name">{{contact.name}}</div>
                             <small class="last-text">
                                 ultimo messaggio inviato
                             </small>
                             <small class="time">12:00</small>
                         </div>
                     </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
-                    <div class="chat row">
-                        <div class="person-image">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="object-of-text">
-                            <div class="chat-name">Michele</div>
-                            <small class="last-text">
-                                ultimo messaggio inviato
-                            </small>
-                            <small class="time">12:00</small>
-                        </div>
-                    </div>
+                    
                     
                     
                 </section>
@@ -278,7 +195,7 @@
 
 
     </div>
-
+    
     <script src="js/contacts.js"></script>
 </body>
 </html>
