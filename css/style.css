@@ -2,15 +2,12 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 /*common use*/
 .row{
     display: flex;
 }
-
-
-
-
 
 body{
     height: 100vh;
@@ -39,8 +36,17 @@ body{
     object-fit: cover;
     object-position: center;
 }
-
-
+.person-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.person-image img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
 
 
 /*-------------------left style--------------------------------------*/
@@ -48,6 +54,7 @@ body{
     width: 34%;
     height: 100%;
     border-right: 1px solid lightgrey;
+    flex-direction: column;
 }
 .left-header{
     background-color: #eaeaea;
@@ -71,8 +78,7 @@ body{
 .notification{
     background-color: #8edafc;
     width: 100%;
-    height: 9.5%;
-    padding: 0px 20px;
+    padding: 10px 20px;
     align-items: center;
 }
 .bell-icon{
@@ -91,8 +97,7 @@ body{
 }
 .search-bar{
     width: 100%;
-    height: 6%;
-    padding: 0px 5px;
+    padding: 10px 5px;
     align-items: center;
     background-color: #fafafa;
 }
@@ -105,18 +110,44 @@ body{
     border-right: none;
 }
 #search-btn{
-    border: none;
+    border: 1px solid lightgray;
+    height: 30px;
+    border-right: none;
+    width: 20%;
     background-color: transparent;
     color: #b6b9bb;
+
     
 }
 .search-field{
     width: 80%;
 }
 .search-chat{
-    width: 100%;
+    width: 80%;
     height: 30px;
     border: 1px solid lightgray;
+}
+.chats{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+.chat{
+    width: 100%;
+    height: 13.5%;
+    padding: 10px 15px;
+    position: relative;
+}
+.object-of-text{
+    border-bottom: 1px solid lightgray;
+    flex-grow: 1;
+}
+.last-text{
+    color: #b6b9bb;
+}
+.time{
+    position: absolute;
+    top: 10px;
+    right: 15px;
 }
 /*-------------------rght style--------------------------------------*/
 .right-app{

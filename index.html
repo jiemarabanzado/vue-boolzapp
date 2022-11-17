@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
@@ -14,7 +17,7 @@
         
         <div class="app-container row">
             <!--left side of application-->
-            <div class="left-app">
+            <div class="left-app row">
                 <!--header left app column-->
                 <div class="left-header row">
                     <div class="my-avatar">
@@ -38,15 +41,29 @@
                     </div>
                 </div>
                 <!--section bar row-->
-                <div class="search-bar row">
-                    <div class="search row">
+                <div class="search-bar">
+                    <form action="">
                         <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                    <div class="search-field">
                         <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-
+                    </form>
                 </div>
+                <!--all chats section-->
+                <section class="chats">
+                    <div class="chat row">
+                        <div class="person-image">
+                            <img src="img/avatar_1.jpg" alt="">
+                        </div>
+                        <div class="object-of-text">
+                            <div class="chat-name">Michele</div>
+                            <small class="last-text">
+                                ultimo messaggio inviato
+                            </small>
+                            <small class="time">12:00</small>
+                        </div>
+                    </div>
+                    
+                    
+                </section>
             </div>
             <!--right side of application-->
             <div class="right-app">
