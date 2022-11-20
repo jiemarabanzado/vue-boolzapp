@@ -25,6 +25,9 @@ body{
 .active{
     background-color: #E9EBEB;
 }
+input:focus{
+    outline: none;
+}
 /*--------------images-------------*/
 .my-avatar{
     width: 40px;
@@ -238,11 +241,12 @@ body{
   
 }
 .content{
-    width: 40%;
-    padding: 10px 15px;
+    width: 41%;
+    padding: 10px 0px;
+    padding-left: 7px;
+    padding-right: 20px;
     border-radius: 10px;
     position: relative;
-    
 }
 .received{
     background-color: #ffffff; 
@@ -254,3 +258,51 @@ body{
     font-size: 0.75rem;
     color:#b6b9bb;
 }
+.menu-message{
+    width: 170px;
+    font-size: 0.9rem;
+    position: absolute;
+    background-color:white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    right: -135px;
+    opacity: 0;
+    bottom:-70;
+    z-index: 0;
+    height: 0px;
+    transition: ease-out 200ms;
+}
+.menu-message-right{
+    right: 0;
+}
+
+.chevron{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    opacity: 0;
+    z-index: 1;
+    color: #6b7376;
+}
+.content:hover .chevron{
+    opacity: 1;
+    transition: 300ms;
+}
+.info ,.delete-text{
+    font-size: 1.1rem;
+    padding: 15px;
+}
+.showOptions{
+    height: 104px;
+    padding: 5px 0px;
+    opacity: 1;
+    z-index: 3;
+    overflow: hidden;
+    transition: ease-out 300ms;
+}
+.info:hover{
+    background-color: #ced6d9;
+}
+.delete-text:hover{
+    background-color: #ced6d9;
+}
+
