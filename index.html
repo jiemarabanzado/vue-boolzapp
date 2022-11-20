@@ -94,10 +94,20 @@
                                 {{message.message}}
                                 <small class="time-sent">12:00</small>
                                 <div class="menu-message"  :class="message.option==true ? 'showOptions':'',message.status=='sent' ? 'menu-message-right':''" >
-                                    <div class="info">message info</div>
-                                    <div class="delete-text" @click="deleteText(index)">delete message</div>
+                                    <div class="info">Message info</div>
+                                    <div class="delete-text" @click="deleteText(index)">Elimina messaggio</div>
                                 </div>
                                 <div class="chevron" @click="OpenContentMenu(index)"><i class="fa-solid fa-chevron-down"></i></div>
+                                <div class="emote-toggle":class="message.status=='sent' ? 'emote-toggle-right':''"><i class="fa-regular fa-face-smile" @click="OpenReactions(index)"></i></div>
+                                <div class="reaction" :class="message.reactions==true ? 'showReactions':'',message.status=='sent' ? 'reaction-right':''">
+                                    <span @click="addHeart(index)">❤</span>
+                                    <span @click="addKiss(index)">😘</span>
+                                    <span @click="addLaugh(index)">😂</span>
+                                    <span @click="addSad(index)">😢</span>
+                                    <span @click="addAngry(index)">😡</span>
+                                    <span @click="addThumb(index)">👍</span>
+                                </div>
+                                <small class="emote">{{message.myEmote}}</small>
                             </div>                            
                         </div>
                         

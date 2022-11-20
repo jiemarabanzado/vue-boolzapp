@@ -7,6 +7,7 @@ const { createApp } = Vue
         message: 'Hello Vue!',
         activeChat:0,
         activeOption:0,
+        activeReaction:0,
         newText: "",
         searchChat:'',
         activeMessage:0,
@@ -20,19 +21,25 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent',
-                        option: false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Ricordati di stendere i panni',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -45,19 +52,25 @@ const { createApp } = Vue
                         date: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '20/03/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '20/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -70,19 +83,25 @@ const { createApp } = Vue
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '28/03/2020 10:20:10',
                         message: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '28/03/2020 16:15:22',
                         message: 'Ah scusa!',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -95,13 +114,17 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -114,13 +137,17 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Ricordati di chiamare la nonna',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Va bene, stasera la sento',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -133,19 +160,25 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao Claudia, hai novità?',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Non ancora',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:51:00',
                         message: 'Nessuna nuova, buona nuova',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -158,13 +191,17 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Fai gli auguri a Martina che è il suo compleanno!',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Grazie per avermelo ricordato, le scrivo subito!',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     }
                 ],
             },
@@ -177,19 +214,25 @@ const { createApp } = Vue
                         date: '10/01/2020 15:30:55',
                         message: 'Ciao, andiamo a mangiare la pizza stasera?',
                         status: 'received',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
                         status: 'sent',
-                        option:false
+                        myEmote:'',
+                        option: false,
+                        reactions:false
                     },
                     {
                         date: '10/01/2020 15:51:00',
                         message: 'OK!!',
+                        myEmote:'',
                         status: 'received',
-                        option:false
+                        option: false,
+                        reactions:false
                     }
                 ],
             }
@@ -205,7 +248,9 @@ const { createApp } = Vue
                 date: new Date().getTime(),
                 message: this.newText,
                 status: 'sent',
-                option:'false'
+                myEmote:'',
+                option:false,
+                reactions:false
             }
             this.contacts[this.activeChat].messages.push(newMessageObj);
             this.newText=""
@@ -213,8 +258,10 @@ const { createApp } = Vue
                 const newMessageObjResponse={
                     date: new Date().getTime(),
                     message: "ok",
+                    myEmote:'',
                     status: 'received',
-                    option:'false'
+                    option:false,
+                    reactions:false
                 }
                 this.contacts[this.activeChat].messages.push(newMessageObjResponse);
             },2000);
@@ -233,7 +280,7 @@ const { createApp } = Vue
         },
         OpenContentMenu(i){
             this.activeMessage=i;
-            if(this.activeOption==0){
+            if(this.activeOption==0 && this.activeReaction==0){
                 this.contacts[this.activeChat].messages[this.activeMessage].option=true;
                 this.activeOption=1;
             }else if(this.contacts[this.activeChat].messages[this.activeMessage].option==true)   
@@ -242,9 +289,87 @@ const { createApp } = Vue
                     this.activeOption=0;
                 }   
         },
+        OpenReactions(i){
+            this.activeMessage=i;
+            if(this.activeReaction==0 && this.activeOption==0){
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=true;
+                this.activeReaction=1;
+            }else if(this.contacts[this.activeChat].messages[this.activeMessage].reactions==true)   
+                {
+                    this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+                    this.activeReaction=0;
+                }   
+        },
         deleteText(i){
             this.activeMessage=i;
             this.contacts[this.activeChat].messages.splice(this.activeMessage,1);
+            this.activeOption=0;
+        },
+        addHeart(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='❤'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='❤';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
+        },
+        addKiss(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='😘'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='😘';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
+        },
+        addLaugh(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='😂'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='😂';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
+        },
+        addSad(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='😢'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='😢';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
+        },
+        addAngry(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='😡'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='😡';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
+        },
+        addThumb(i){
+            if(this.contacts[this.activeChat].messages[this.activeMessage].myEmote=='👍'){
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }else{
+                this.contacts[this.activeChat].messages[this.activeMessage].myEmote='👍';
+                this.activeReaction=0;
+                this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
+            }
         }
     }
 }).mount('#app')
