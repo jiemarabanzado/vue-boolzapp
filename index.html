@@ -18,8 +18,41 @@
         <div class="app-container row">
             <!--left side of application-->
             <div class="left-app row">
-                <div class="archive-container">
-                    
+                <div class="archive-container " :class="contacts.activeArchives==true ? 'show-archive':''">
+                    <div class="archive-header">
+                        <span @click="ToggleArchive"><i class="fa-solid fa-arrow-left-long"></i></span>
+                        <span>Archiviate</span>
+                    </div>
+                    <!--chat inside archive-->
+                    <div class="chats-archive">
+                        <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in ChatsInArchive" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
+                            <div class="person-image">
+                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                            </div>
+                            <div class="object-of-text">
+                                <div class="chat-name">{{contact.name}}</div>
+                                <small class="last-text">
+                                    {{contact.messages[contact.messages.length-1].message}}
+                                </small>
+                                <small class="time">12:00</small>
+                            </div>
+                            <div class="chat-menu row">
+                                <div class="silenced" v-show="contact.silenced">
+                                    <i class="fa-solid fa-volume-xmark"></i>
+                                </div>
+                                <div class="pinned"v-show="contact.pinned">
+                                    <i class="fa-solid fa-thumbtack"></i>
+                                </div>
+                                <div class="open-chat-menu" @click="OpenChatMenu(index)">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>  
+                            <div class="chat-options" :class="contact.menu==true ? 'show-chat-options':''">
+                                <div>Estrai chat</div>
+                                <div>Elimina chat</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--header left app column-->
                 <div class="left-header row">
@@ -53,13 +86,13 @@
                         <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat"@keyup="searchContact">
                     </form>
                 </div>
-                <!--archive section-->
-                <div class="archive-bar">
-                    <span><i class="fa-solid fa-box-archive"></i></span>
-                    <span>Archiviate</span>
-                </div>
+                
                 <!--all chats section-->
                 <section class="chats">
+                    <div class="archive-bar"@click="ToggleArchive">
+                        <span><i class="fa-solid fa-box-archive"></i></span>
+                        <span>Archiviate</span>
+                    </div>
                     <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in contacts" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
                         <div class="person-image">
                             <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
@@ -83,22 +116,13 @@
                             </div>
                         </div>  
                         <div class="chat-options" :class="contact.menu==true ? 'show-chat-options':''">
-                            <div>Archivia chat</div>
+                            <div @click="PutInArchive(index)">Archivia chat</div>
                             <div>Disattiva notifiche</div>
                             <div>Elimina chat</div>
                             <div>Fissa chat</div>
                             <div>Non fissare Chat</div>
                         </div>
-                    </div>
-                    <!--<div class="chat-options">
-                        <div>Archivia chat</div>
-                        <div>Disattiva notifiche</div>
-                        <div>Elimina chat</div>
-                        <div>Fissa chat</div>
-                        <div>Non fissare Chat</div>
-                    </div>-->
-                    
-                    
+                    </div>                    
                 </section>
             </div>
             <!--right side of application-->

@@ -5,6 +5,7 @@ const { createApp } = Vue
     data() {
       return {
         message: 'Hello Vue!',
+        ambientArchive:0,
         activeChat:0,
         activeOption:0,
         activeReaction:0,
@@ -13,8 +14,10 @@ const { createApp } = Vue
         searchChat:'',
         activeChatMenu:0,
         activeMessage:0,
+        activeArchives:false,
         whoRespond:0,
         activeMenu:0,
+        ChatsInArchive:[],
         contacts: [
             {
                 name: 'Michele',
@@ -326,6 +329,14 @@ const { createApp } = Vue
                     this.activeMenu=0;
                 }   
         },
+        ToggleArchive(){
+            if(this.contacts.activeArchives==false){
+                this.contacts.activeArchives=true;
+            }else{
+                this.contacts.activeArchives=false;
+            }
+            
+        },
         OpenContentMenu(i){
             this.activeMessage=i;
             if(this.activeOption==0 &&this.activeMenu==0&& this.activeReaction==0){
@@ -418,6 +429,13 @@ const { createApp } = Vue
                 this.activeReaction=0;
                 this.contacts[this.activeChat].messages[this.activeMessage].reactions=false;
             }
+        },
+        PutInArchive(i){
+            const newChatInArchive= this.contacts[i];
+            this.ChatsInArchive.push(newChatInArchive);
+            this.contacts.splice(i,1);
+            this.contacts[this.activeChatMenu].menu=false;
+            this.activeMenu=0;
         }
     }
 }).mount('#app')

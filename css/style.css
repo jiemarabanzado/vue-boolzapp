@@ -79,21 +79,38 @@ input:focus{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: white;
     z-index: 6;
     left: -100%;
-}
-.archive{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: blue;
-    z-index: 6;
-    left: -100%;
-    
+    opacity: 0;
+    transition: 300ms;
+    transition-delay: 0ms left,opacity 300ms;
+    display: flex;
+    flex-direction: column;
 }
 .archive-bar{
     padding: 15px 20px;
+    cursor: pointer;
+}
+.chats-archive{
+    flex-grow: 1;
+    position: relative;
+}
+.show-archive{
+    left: 0;
+    opacity: 1;
+    transition: 200ms , opacity 200ms;
+}
+.archive-header{
+    height: 14.5%;
+    background-color: #008069;
+    padding-top: 15%;
+    padding-left: 5%;
+}
+.archive-header span{
+    font-size: 1.2rem;
+    color: white;
+    margin-right: 20px;
     cursor: pointer;
 }
 .archive-bar:hover{
