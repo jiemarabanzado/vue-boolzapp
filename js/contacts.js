@@ -78,7 +78,7 @@ const { createApp } = Vue
                         reactions:false
                     },
                     {
-                        date: '20/03/2020 16:35:00',
+                        date: '12/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent',
                         myEmote:'',
@@ -96,7 +96,7 @@ const { createApp } = Vue
                 silenced:false,
                 messages: [
                     {
-                        date: '28/03/2020 10:10:40',
+                        date: '10/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
                         status: 'received',
                         myEmote:'',
@@ -112,7 +112,7 @@ const { createApp } = Vue
                         reactions:false
                     },
                     {
-                        date: '28/03/2020 16:15:22',
+                        date: '11/03/2020 16:15:22',
                         message: 'Ah scusa!',
                         status: 'received',
                         myEmote:'',
@@ -276,6 +276,11 @@ const { createApp } = Vue
                 this.activeChat=i;
             }
             
+        },
+        dateFormat(data){
+
+            return moment(data).fromNow();
+    
         },
         addNewMessage(){
             this.whoRespond=this.activeChat;

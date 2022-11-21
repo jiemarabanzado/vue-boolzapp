@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 </head>
 <body class="row">
     <div id="app">
@@ -99,7 +101,7 @@
                             <small class="last-text">
                                 {{contact.messages[contact.messages.length-1].message}}
                             </small>
-                            <small class="time">12:00</small>
+                            <small class="time">{{ dateFormat(contact.messages[contact.messages.length-1].date) }}</small>
                         </div>
                         <div class="chat-menu row">
                             <div class="silenced" v-show="contact.silenced">
@@ -134,7 +136,7 @@
                         <div class="subject-name">{{contacts[activeChat].name}}</div>
                         <div class="last-online">
                             <small class="last-time-on">
-                                Ultimo accesso oggi alle 12:00
+                                Ultimo accesso: {{ dateFormat(contacts[activeChat].messages[contacts[activeChat].messages.length-1].date) }}
                             </small>
                         </div>
                     </div>
@@ -198,7 +200,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/contacts.js"></script>
-    <script src="https://momentjs.com/downloads/moment.js"></script>
-    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    
 </body>
 </html>
