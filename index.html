@@ -23,7 +23,7 @@
                     <div class="my-avatar">
                         <img src="img/avatar_io.jpg" alt=""> 
                     </div>
-                    <div class="my-name">Sophia</div>
+                    <div class="my-name">Caterina</div>
                     <div class="left-head-actions ">
                         <span id="left-story"><i class="fa-solid fa-spinner"></i></span>
                         <span id="new-message"><i class="fa-solid fa-message"></i></span>
@@ -31,15 +31,18 @@
                     </div>
                 </div>
                 <!--notification alert-->
-                <div class="notification row">
-                    <div class="bell-icon row">
-                        <div><i class="fa-regular fa-bell-slash"></i></div>
+                <section :class="notification==false ? 'hide':''">
+                    <div class="notification row" >
+                        <div class="bell-icon row">
+                            <div><i class="fa-regular fa-bell-slash"></i></div>
+                        </div>
+                        <div class="notification-text">
+                            <div>Ricevi notifiche di nuovi messaggi</div>
+                            <small><a id="active-notification"href="">Attiva notifiche desktop</a></small>
+                        </div>
+                        <div class="close-notification" @click="CloseNotification"><i class="fa-solid fa-xmark"></i></div>
                     </div>
-                    <div class="notification-text">
-                        <div>Ricevi notifiche di nuovi messaggi</div>
-                        <small><a id="active-notification"href="">Attiva notifiche desktop</a></small>
-                    </div>
-                </div>
+                </section>
                 <!--section bar row-->
                 <div class="search-bar">
                     <form action="">
@@ -141,5 +144,6 @@
     </div>
     
     <script src="js/contacts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
 </body>
 </html>

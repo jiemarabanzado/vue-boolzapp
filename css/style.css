@@ -97,6 +97,7 @@ input:focus{
     width: 100%;
     padding: 10px 20px;
     align-items: center;
+    position: relative;
 }
 .bell-icon{
     background-color: #f2fbff;
@@ -133,6 +134,8 @@ input:focus{
     width: 20%;
     background-color: transparent;
     color: #b6b9bb;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 
     
 }
@@ -143,6 +146,8 @@ input:focus{
     width: 80%;
     height: 30px;
     border: 1px solid lightgray;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .chats{
     flex-grow: 1;
@@ -166,6 +171,14 @@ input:focus{
     position: absolute;
     top: 10px;
     right: 15px;
+}
+.close-notification{
+    position: absolute;
+    right: 15px;
+    color: #6b7376;
+}
+.hide{
+    display: none;
 }
 /*-------------------rght style--------------------------------------*/
 .right-app{
@@ -331,6 +344,7 @@ input:focus{
     opacity: 0;
     overflow: hidden;
     transition: 200ms;
+    cursor: pointer;
 }
 .showReactions{
     opacity: 1;

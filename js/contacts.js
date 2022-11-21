@@ -8,6 +8,7 @@ const { createApp } = Vue
         activeChat:0,
         activeOption:0,
         activeReaction:0,
+        notification:true,
         newText: "",
         searchChat:'',
         activeMessage:0,
@@ -277,6 +278,11 @@ const { createApp } = Vue
                     contact.visible=false;
                 }
             });
+        },
+        CloseNotification(){
+            console.log(this.notification)
+            this.notification=false;
+            console.log(this.notification)
         },
         OpenContentMenu(i){
             this.activeMessage=i;
