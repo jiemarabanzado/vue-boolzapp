@@ -11,12 +11,18 @@ const { createApp } = Vue
         notification:true,
         newText: "",
         searchChat:'',
+        activeChatMenu:0,
         activeMessage:0,
+        whoRespond:0,
+        activeMenu:0,
         contacts: [
             {
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
+                pinned:false,
+                silenced:false,
+                menu:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -48,6 +54,9 @@ const { createApp } = Vue
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -79,6 +88,9 @@ const { createApp } = Vue
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -110,6 +122,9 @@ const { createApp } = Vue
                 name: 'Alessandro B.',
                 avatar: '_4',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -133,6 +148,9 @@ const { createApp } = Vue
                 name: 'Alessandro L.',
                 avatar: '_5',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -156,6 +174,9 @@ const { createApp } = Vue
                 name: 'Claudia',
                 avatar: '_6',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -187,6 +208,9 @@ const { createApp } = Vue
                 name: 'Federico',
                 avatar: '_7',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -210,6 +234,9 @@ const { createApp } = Vue
                 name: 'Davide',
                 avatar: '_8',
                 visible: true,
+                menu:false,
+                pinned:false,
+                silenced:false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -242,9 +269,13 @@ const { createApp } = Vue
     },
     methods:{
         changeActive(i){
-            this.activeChat=i;
+            if(this.activeMenu==0){
+                this.activeChat=i;
+            }
+            
         },
         addNewMessage(){
+            this.whoRespond=this.activeChat;
             const newMessageObj={
                 date: new Date().getTime(),
                 message: this.newText,
@@ -264,7 +295,7 @@ const { createApp } = Vue
                     option:false,
                     reactions:false
                 }
-                this.contacts[this.activeChat].messages.push(newMessageObjResponse);
+                this.contacts[this.whoRespond].messages.push(newMessageObjResponse);
             },2000);
         },
         searchContact(){
@@ -284,9 +315,20 @@ const { createApp } = Vue
             this.notification=false;
             console.log(this.notification)
         },
+        OpenChatMenu(i){
+            this.activeChatMenu=i;
+            if(this.activeChat==i&&this.activeOption==0 && this.activeMenu==0 && this.activeReaction==0){
+                this.contacts[this.activeChatMenu].menu=true;
+                this.activeMenu=1;
+            }else if(this.contacts[this.activeChatMenu].menu==true)   
+                {
+                    this.contacts[this.activeChatMenu].menu=false;
+                    this.activeMenu=0;
+                }   
+        },
         OpenContentMenu(i){
             this.activeMessage=i;
-            if(this.activeOption==0 && this.activeReaction==0){
+            if(this.activeOption==0 &&this.activeMenu==0&& this.activeReaction==0){
                 this.contacts[this.activeChat].messages[this.activeMessage].option=true;
                 this.activeOption=1;
             }else if(this.contacts[this.activeChat].messages[this.activeMessage].option==true)   
@@ -297,7 +339,7 @@ const { createApp } = Vue
         },
         OpenReactions(i){
             this.activeMessage=i;
-            if(this.activeReaction==0 && this.activeOption==0){
+            if(this.activeReaction==0 && this.activeOption==0 && this.activeMenu==0){
                 this.contacts[this.activeChat].messages[this.activeMessage].reactions=true;
                 this.activeReaction=1;
             }else if(this.contacts[this.activeChat].messages[this.activeMessage].reactions==true)   

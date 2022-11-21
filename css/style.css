@@ -72,6 +72,42 @@ input:focus{
     height: 100%;
     border-right: 1px solid lightgrey;
     flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+.archive-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    z-index: 6;
+    left: -100%;
+}
+.archive{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    z-index: 6;
+    left: -100%;
+    
+}
+.archive-bar{
+    padding: 15px 20px;
+    cursor: pointer;
+}
+.archive-bar:hover{
+    background-color: #b6b9bb;
+}
+.archive-bar span{
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+.archive-bar span:first-child{
+    color: #2d9b80;
+}
+.archive-bar span:not(:first-child){
+    font-weight: 300;
 }
 .left-header{
     background-color: #eaeaea;
@@ -152,6 +188,7 @@ input:focus{
 .chats{
     flex-grow: 1;
     overflow-y: auto;
+    position: relative;
 }
 .chat{
     width: 100%;
@@ -159,18 +196,22 @@ input:focus{
     padding: 10px 15px;
     position: relative;
     border-bottom: 1px solid lightgray;
-    overflow: hidden;
+    cursor: pointer;
+    
 }
 .object-of-text{
     flex-grow: 1;
 }
 .last-text{
     color: #b6b9bb;
+    overflow:hidden;
 }
 .time{
     position: absolute;
     top: 10px;
     right: 15px;
+    opacity: 0.7;
+    font-size: 0.7rem;
 }
 .close-notification{
     position: absolute;
@@ -179,6 +220,54 @@ input:focus{
 }
 .hide{
     display: none;
+}
+.chat-menu{
+    position: absolute;
+    right: 5px;
+    bottom: 20px;
+    align-items: center;
+
+
+}
+.chat-menu div i{
+    color: #6b7376;
+    opacity: 0.7;
+}
+.pinned i{
+    transform: rotate(40deg);
+}
+.silenced{
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+.pinned{
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+.open-chat-menu{
+    display: none;
+}
+.chat:hover .open-chat-menu{
+    display: block;
+}
+.chat-options{
+   position: absolute;
+   right: 24px;
+   background-color: white;
+   display: none;
+   padding: 5px 0px;
+   z-index:2;
+   border: 1px solid lightgray;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.chat-options div{
+    padding: 10px;
+}
+.chat-options div:hover{
+    background-color: #ced6d9;
+}
+.show-chat-options{
+    display: block;
 }
 /*-------------------rght style--------------------------------------*/
 .right-app{

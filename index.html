@@ -18,6 +18,9 @@
         <div class="app-container row">
             <!--left side of application-->
             <div class="left-app row">
+                <div class="archive-container">
+                    
+                </div>
                 <!--header left app column-->
                 <div class="left-header row">
                     <div class="my-avatar">
@@ -50,6 +53,11 @@
                         <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat"@keyup="searchContact">
                     </form>
                 </div>
+                <!--archive section-->
+                <div class="archive-bar">
+                    <span><i class="fa-solid fa-box-archive"></i></span>
+                    <span>Archiviate</span>
+                </div>
                 <!--all chats section-->
                 <section class="chats">
                     <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in contacts" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
@@ -63,8 +71,32 @@
                             </small>
                             <small class="time">12:00</small>
                         </div>
+                        <div class="chat-menu row">
+                            <div class="silenced" v-show="contact.silenced">
+                                <i class="fa-solid fa-volume-xmark"></i>
+                            </div>
+                            <div class="pinned"v-show="contact.pinned">
+                                <i class="fa-solid fa-thumbtack"></i>
+                            </div>
+                            <div class="open-chat-menu" @click="OpenChatMenu(index)">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>  
+                        <div class="chat-options" :class="contact.menu==true ? 'show-chat-options':''">
+                            <div>Archivia chat</div>
+                            <div>Disattiva notifiche</div>
+                            <div>Elimina chat</div>
+                            <div>Fissa chat</div>
+                            <div>Non fissare Chat</div>
+                        </div>
                     </div>
-                    
+                    <!--<div class="chat-options">
+                        <div>Archivia chat</div>
+                        <div>Disattiva notifiche</div>
+                        <div>Elimina chat</div>
+                        <div>Fissa chat</div>
+                        <div>Non fissare Chat</div>
+                    </div>-->
                     
                     
                 </section>
