@@ -25,7 +25,7 @@
                     </div>
                     <!--chat inside archive-->
                     <div class="chats-archive">
-                        <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in ChatsInArchive" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
+                        <div class="chat row" v-for="(contact,index) in ChatsInArchive"v-show="contact.visible||searchChat==''">
                             <div class="person-image">
                                 <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
                             </div>
@@ -40,15 +40,12 @@
                                 <div class="silenced" v-show="contact.silenced">
                                     <i class="fa-solid fa-volume-xmark"></i>
                                 </div>
-                                <div class="pinned"v-show="contact.pinned">
-                                    <i class="fa-solid fa-thumbtack"></i>
-                                </div>
                                 <div class="open-chat-menu" @click="OpenChatMenu(index)">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>  
                             <div class="chat-options" :class="contact.menu==true ? 'show-chat-options':''">
-                                <div>Estrai chat</div>
+                                <div @click="RemoveFromArchive(index)">Estrai chat</div>
                                 <div>Elimina chat</div>
                             </div>
                         </div>
@@ -117,8 +114,9 @@
                         </div>  
                         <div class="chat-options" :class="contact.menu==true ? 'show-chat-options':''">
                             <div @click="PutInArchive(index)">Archivia chat</div>
-                            <div>Disattiva notifiche</div>
-                            <div>Elimina chat</div>
+                            <div @click="Mute(Index)" v-show="!contact.silenced">Disattiva notifiche</div>
+                            <div v-show="contact.silenced" @click="Mute(Index)">Riattiva notifiche</div>
+                            <div @click="DeleteChat(index)">Elimina chat</div>
                             <div>Fissa chat</div>
                             <div>Non fissare Chat</div>
                         </div>
@@ -198,7 +196,7 @@
 
 
     </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/contacts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
 </body>

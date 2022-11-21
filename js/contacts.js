@@ -290,15 +290,21 @@ const { createApp } = Vue
             this.contacts[this.activeChat].messages.push(newMessageObj);
             this.newText=""
             setTimeout(()=>{
-                const newMessageObjResponse={
-                    date: new Date().getTime(),
-                    message: "ok",
-                    myEmote:'',
-                    status: 'received',
-                    option:false,
-                    reactions:false
-                }
-                this.contacts[this.whoRespond].messages.push(newMessageObjResponse);
+                axios.get('https://api.chucknorris.io/jokes/random')
+                .then((response)=>{
+                    const result=response.data.value;
+                    console.log(result);
+                    const newMessageObjResponse={
+                        date: new Date().getTime(),
+                        message: result,
+                        myEmote:'',
+                        status: 'received',
+                        option:false,
+                        reactions:false
+                    }
+                    this.contacts[this.whoRespond].messages.push(newMessageObjResponse);
+                })
+                
             },2000);
         },
         searchContact(){
@@ -319,21 +325,39 @@ const { createApp } = Vue
             console.log(this.notification)
         },
         OpenChatMenu(i){
-            this.activeChatMenu=i;
-            if(this.activeChat==i&&this.activeOption==0 && this.activeMenu==0 && this.activeReaction==0){
-                this.contacts[this.activeChatMenu].menu=true;
+            if(this.ambientArchive==0){
+                this.activeChatMenu=i;
+                if(this.activeChat==i&&this.activeOption==0 && this.activeMenu==0 && this.activeReaction==0){
+                    this.contacts[this.activeChatMenu].menu=true;
+                    this.activeMenu=1;
+                }else if(this.contacts[this.activeChatMenu].menu==true)   
+                    {
+                        this.contacts[this.activeChatMenu].menu=false;
+                        this.activeMenu=0;
+                    }  
+            }else{
+                this.activeChatMenu=i;
+            if(this.activeOption==0 && this.activeMenu==0 && this.activeReaction==0){
+                this.ChatsInArchive[this.activeChatMenu].menu=true;
                 this.activeMenu=1;
-            }else if(this.contacts[this.activeChatMenu].menu==true)   
+            }else if(this.ChatsInArchive[this.activeChatMenu].menu==true)   
                 {
-                    this.contacts[this.activeChatMenu].menu=false;
+                    this.ChatsInArchive[this.activeChatMenu].menu=false;
                     this.activeMenu=0;
-                }   
+                }  
+            }
+            
         },
         ToggleArchive(){
             if(this.contacts.activeArchives==false){
                 this.contacts.activeArchives=true;
+                this.contacts[this.activeChatMenu].menu=false;
+                this.activeMenu=0;
+                this.ambientArchive=1;
             }else{
                 this.contacts.activeArchives=false;
+                this.ambientArchive=0;
+                this.activeMenu=0;
             }
             
         },
@@ -431,11 +455,43 @@ const { createApp } = Vue
             }
         },
         PutInArchive(i){
+            if(this.activeMenu==1){
+                this.contacts[this.activeChatMenu].menu=false;
+            }
+            if(this.activeChat==this.contacts.length-1){
+                this.activeChat-=1;
+            }
             const newChatInArchive= this.contacts[i];
             this.ChatsInArchive.push(newChatInArchive);
             this.contacts.splice(i,1);
-            this.contacts[this.activeChatMenu].menu=false;
             this.activeMenu=0;
+        },
+        RemoveFromArchive(i){
+            if(this.activeMenu==1){
+                this.ChatsInArchive[this.activeChatMenu].menu=false;
+            }
+            const newChatInArchive= this.ChatsInArchive[i];
+            this.contacts.push(newChatInArchive);
+            this.ChatsInArchive.splice(i,1);
+            this.activeMenu=0;
+        },
+        Mute(i){
+            if(this.activeMenu==1){
+                this.contacts[this.activeChatMenu].menu=false;
+            }
+            if(this.contacts[this.activeChat].silenced==false){
+                this.contacts[this.activeChat].silenced=true;
+            }else{
+                this.contacts[this.activeChat].silenced=false;
+            }
+            
+            this.activeMenu=0;
+        },
+        DeleteChat(i){
+            if(this.activeChat==this.contacts.length-1){
+                this.activeChat-=1;
+            }
+            this.contacts.splice(i,1);
         }
     }
 }).mount('#app')

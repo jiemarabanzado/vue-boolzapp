@@ -209,19 +209,21 @@ input:focus{
 }
 .chat{
     width: 100%;
-    height: 13.5%;
     padding: 10px 15px;
     position: relative;
     border-bottom: 1px solid lightgray;
     cursor: pointer;
+    align-items: center;
     
 }
 .object-of-text{
     flex-grow: 1;
+    overflow: hidden;
+    height: 39px;
 }
 .last-text{
     color: #b6b9bb;
-    overflow:hidden;
+    overflow-y:hidden;
 }
 .time{
     position: absolute;
