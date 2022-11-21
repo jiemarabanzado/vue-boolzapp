@@ -492,6 +492,7 @@ const { createApp } = Vue
                 this.activeChat-=1;
             }
             this.contacts.splice(i,1);
+            this.activeMenu=0;
         }
     }
 }).mount('#app')

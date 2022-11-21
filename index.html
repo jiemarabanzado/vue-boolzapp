@@ -118,7 +118,7 @@
                             <div v-show="contact.silenced" @click="Mute(Index)">Riattiva notifiche</div>
                             <div @click="DeleteChat(index)">Elimina chat</div>
                             <div>Fissa chat</div>
-                            <div>Non fissare Chat</div>
+                            <div v-show="contact.penned">Non fissare Chat</div>
                         </div>
                     </div>                    
                 </section>
@@ -198,6 +198,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/contacts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 </body>
 </html>
