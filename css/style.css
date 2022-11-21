@@ -91,6 +91,7 @@ input:focus{
 .archive-bar{
     padding: 15px 20px;
     cursor: pointer;
+    border-bottom: 1px solid lightgray;
 }
 .chats-archive{
     flex-grow: 1;
