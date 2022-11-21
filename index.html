@@ -119,8 +119,8 @@
                             <div @click="Mute(Index)" v-show="!contact.silenced">Disattiva notifiche</div>
                             <div v-show="contact.silenced" @click="Mute(Index)">Riattiva notifiche</div>
                             <div @click="DeleteChat(index)">Elimina chat</div>
-                            <div>Fissa chat</div>
-                            <div v-show="contact.penned">Non fissare Chat</div>
+                            <div @click="PinChat(index)" v-show="!contact.pinned">Fissa chat</div>
+                            <div @click="UnPinChat(index)"v-show="contact.pinned">Non fissare Chat</div>
                         </div>
                     </div>                    
                 </section>

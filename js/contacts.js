@@ -498,6 +498,25 @@ const { createApp } = Vue
             }
             this.contacts.splice(i,1);
             this.activeMenu=0;
+        },
+        PinChat(i){
+            this.contacts[this.activeChat].pinned=true;
+            this.contacts[this.activeChatMenu].menu=false;
+            this.activeMenu=0;
+            const isPinned=true;
+            while(isPinned){
+                for (let index = 0; index < this.contacts.length; index++) {
+                    if(this.contacts[index].pinned==false){
+                        const temp=this.contacts[index];
+                        this.contacts[index]=this.contacts[this.activeChat];
+                        this.contacts[this.activeChat]=temp;
+                        isPinned=false;
+                    }  
+                }
+            }
+        },
+        UnPinChat(i){
+            this.contacts[this.activeChat].pinned=false;
         }
     }
 }).mount('#app')
